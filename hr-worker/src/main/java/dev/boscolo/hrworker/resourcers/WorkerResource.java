@@ -23,7 +23,7 @@ public class WorkerResource {
 
 	private static Logger logger = org.slf4j.LoggerFactory.getLogger(WorkerResource.class);
 	
-	@Value("${test.config}")
+	@Value("${test.config:}")
 	private String testConfig;
 	
 	@Autowired
