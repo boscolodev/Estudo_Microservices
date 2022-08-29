@@ -34,7 +34,7 @@ public class WorkerResource {
 	
 	@GetMapping(value = "{id}")
 	public ResponseEntity<WorkerDTO> findById(@PathVariable Long id){
-		
+				
 		logger.info("PORT: "+env.getProperty("local.server.port"));
 		
 		WorkerDTO workerDTO =  service.findById(id);
