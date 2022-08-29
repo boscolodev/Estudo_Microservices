@@ -1,39 +1,23 @@
-package dev.boscolo.hrworker.dto;
+package dev.boscolo.hrpayroll.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-import dev.boscolo.hrworker.entities.Worker;
-
-public class WorkerDTO implements Serializable{
+public class Payment implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
 	private String name;
 	private Double dailyIncome;
+	private Integer days;
 	
-	public WorkerDTO() {
+	public Payment() {
 		
 	}
 
-	public WorkerDTO(Long id, String name, Double dailyIncome) {
-		this.id = id;
+	public Payment(String name, Double dailyIncome, Integer days) {
 		this.name = name;
 		this.dailyIncome = dailyIncome;
-	}
-	
-	public WorkerDTO(Worker worker) {
-		this.id = worker.getId();
-		this.name = worker.getName();
-		this.dailyIncome = worker.getDailyIncome();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		this.days = days;
 	}
 
 	public String getName() {
@@ -52,11 +36,19 @@ public class WorkerDTO implements Serializable{
 		this.dailyIncome = dailyIncome;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
+	public Integer getDays() {
+		return days;
 	}
 
+	public void setDays(Integer days) {
+		this.days = days;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dailyIncome, name);
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -65,8 +57,8 @@ public class WorkerDTO implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		WorkerDTO other = (WorkerDTO) obj;
-		return Objects.equals(id, other.id);
+		Payment other = (Payment) obj;
+		return Objects.equals(dailyIncome, other.dailyIncome) && Objects.equals(name, other.name);
 	}
 
 }
