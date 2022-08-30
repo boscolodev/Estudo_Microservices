@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import dev.boscolo.hruser.dto.UserDTO;
 import dev.boscolo.hruser.entities.User;
 import dev.boscolo.hruser.repositories.UserRepository;
-import dev.boscolo.hruser.services.exceptions.DatabaseException;
 import dev.boscolo.hruser.services.exceptions.ResourceNotFoundException;
 
 @Service
