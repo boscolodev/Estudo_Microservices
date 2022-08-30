@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import dev.boscolo.hroauth.entities.User;
+import dev.boscolo.hroauth.dto.UserDTO;
 
 
 @Component
@@ -14,6 +14,6 @@ import dev.boscolo.hroauth.entities.User;
 public interface UserFeignClient {
 
 	@GetMapping(value = "/email")
-	ResponseEntity<User> findByEmail(@RequestParam String email);
+	ResponseEntity<UserDTO> findByEmail(@RequestParam String email);
 	
 }

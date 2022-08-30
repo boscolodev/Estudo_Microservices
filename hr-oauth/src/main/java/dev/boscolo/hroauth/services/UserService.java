@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import dev.boscolo.hroauth.entities.User;
+import dev.boscolo.hroauth.dto.UserDTO;
 import dev.boscolo.hroauth.feignclients.UserFeignClient;
 
 @Service
@@ -19,20 +19,20 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private UserFeignClient userFeignClient;
 	
-	public User findByEmail(String email) {
-		User user = userFeignClient.findByEmail(email).getBody();
-		logger.info("EMAIL: "+email);
-		return user;
+	public UserDTO findByEmail(String email) {
+		UserDTO userDTO = userFeignClient.findByEmail(email).getBody();
+		return userDTO;
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userFeignClient.findByEmail(username).getBody();
-		if(user == null) {
+		UserDTO userDTO = userFeignClient.findByEmail(username).getBody();
+		if(userDTO == null) {
 			logger.error("User not found: " + username);
 			throw new UsernameNotFoundException("Email not found.");
 		}
 		logger.info("User found: " + username);
-		return user;
+		
+		return userDTO;
 	}
 }
