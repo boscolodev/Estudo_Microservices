@@ -1,7 +1,5 @@
 package dev.boscolo.hrapigatewayzuul.config;
 	
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -29,9 +27,17 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	@Autowired
 	private JwtTokenStore tokenStore;
 	
+<<<<<<< HEAD
 	private static final String[] PUBLIC = {"/hr-oauth/oauth/token"};
 	private static final String[] OPERATOR = { "/hr-worker/**"};
 	private static final String[] ADMIN = {"/hr-payroll/**", "/hr-user/**", "/actuator/**", "/hr-worker/actuator/**", "/hr-oauth/actuator/**"};
+=======
+	private static final String[] PUBLIC = { "/hr-oauth/oauth/token" };
+	
+	private static final String[] OPERATOR = { "/hr-worker/**" };
+	
+	private static final String[] ADMIN = { "/hr-payroll/**", "/hr-user/**", "/actuator/**", "/hr-worker/actuator/**", "/hr-oauth/actuator/**" };
+>>>>>>> 85c6ce4d60a18646f0b7ec7d926e52a3b0fd1b89
 	
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -39,6 +45,17 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	}
 
 	@Override
+	public void configure(HttpSecurity http) throws Exception {
+		
+		http.authorizeRequests()
+		.antMatchers(PUBLIC).permitAll()
+		.antMatchers(HttpMethod.GET, OPERATOR).hasAnyRole("OPERATOR", "ADMIN")
+		.antMatchers(ADMIN).hasRole("ADMIN")
+		.anyRequest().authenticated();
+		
+	}
+	
+	/*@Override
 	public void configure(HttpSecurity http) throws Exception {
 		
 		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
@@ -67,6 +84,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		return source;
 			
 	}
+<<<<<<< HEAD
 
 	@Bean
 	public FilterRegistrationBean<CorsFilter> corsFilter(){
@@ -76,4 +94,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		return bean;
 	}
 	
+=======
+*/
+>>>>>>> 85c6ce4d60a18646f0b7ec7d926e52a3b0fd1b89
 }

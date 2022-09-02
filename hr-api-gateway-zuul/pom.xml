@@ -9,7 +9,7 @@
 		<version>2.3.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>dev.boscolo</groupId>
+	<groupId>deb.boscolo</groupId>
 	<artifactId>hr-api-gateway-zuul</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>hr-api-gateway-zuul</name>
@@ -33,10 +33,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-oauth2</artifactId>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -49,6 +46,13 @@
 			</exclusions>
 		</dependency>
 		<dependency>
+<<<<<<< HEAD
+=======
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-oauth2</artifactId>
+		</dependency>
+		<dependency>
+>>>>>>> 85c6ce4d60a18646f0b7ec7d926e52a3b0fd1b89
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
@@ -56,6 +60,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
+<<<<<<< HEAD
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
@@ -66,6 +71,8 @@
 			<artifactId>saaj-impl</artifactId>
 			<version>1.5.1</version>
 		</dependency>
+=======
+>>>>>>> 85c6ce4d60a18646f0b7ec7d926e52a3b0fd1b89
 	</dependencies>
 
 	<dependencyManagement>
@@ -89,4 +96,4 @@
 		</plugins>
 	</build>
 
-</project> 
+</project>

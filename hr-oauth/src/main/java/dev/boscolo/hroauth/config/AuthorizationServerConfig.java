@@ -21,12 +21,15 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
 	@Value("${oauth.client.name}")
+<<<<<<< HEAD
 	private String clientId;
+=======
+	private String clientName;
+>>>>>>> 85c6ce4d60a18646f0b7ec7d926e52a3b0fd1b89
 	
 	@Value("${oauth.client.secret}")
 	private String clientSecret;
 	
-	//@Value("${jwt.duration}")
 	private Integer jwtDuration = 86400;
 	
 	@Autowired
@@ -52,7 +55,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory()
-		.withClient(clientId)
+		.withClient(clientName)
 		.secret(passwordEncode.encode(clientSecret))
 		.scopes("read","write")
 		.authorizedGrantTypes("password")
