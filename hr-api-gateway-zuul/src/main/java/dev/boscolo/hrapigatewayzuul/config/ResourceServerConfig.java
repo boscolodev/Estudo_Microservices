@@ -1,5 +1,7 @@
 package dev.boscolo.hrapigatewayzuul.config;
 	
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -34,6 +36,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		
+		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
+			http.headers().frameOptions().disable();
+		}
+		
 		http.authorizeRequests()
 		.antMatchers(PUBLIC).permitAll()
 		.antMatchers(HttpMethod.GET, OPERATOR).hasAnyRole("OPERATOR", "ADMIN")
@@ -41,20 +47,5 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		.anyRequest().authenticated();
 		
 	}
-	
-	/*@Override
-	public void configure(HttpSecurity http) throws Exception {
-		
-		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
-			http.headers().frameOptions().disable();
-		}
-		
-		http.authorizeRequests()
-		.antMatchers(PUBLIC).permitAll()
-		.antMatchers(HttpMethod.GET, OPERATOR).hasAnyRole("OPERATOR","ADMIN")
-		.antMatchers(ADMIN).hasRole("ADMIN")
-		.anyRequest().authenticated();	
-		
-	}
-*/
+
 }
