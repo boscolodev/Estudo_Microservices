@@ -1,12 +1,17 @@
 package dev.boscolo.hroauth.config;
 
 import org.springframework.beans.factory.annotation.Value;
+<<<<<<< HEAD
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+=======
+>>>>>>> 85c6ce4d60a18646f0b7ec7d926e52a3b0fd1b89
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
+@RefreshScope
 @Configuration
 public class AppConfig {
 
