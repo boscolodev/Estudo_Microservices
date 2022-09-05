@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.boscolo.hroauth.dto.UserDTO;
+import dev.boscolo.hroauth.entities.User;
 import dev.boscolo.hroauth.services.UserService;
 
 @RestController
@@ -21,8 +22,8 @@ public class UserResource {
 	@GetMapping(value = "/email")
 	public ResponseEntity<UserDTO> findByEmail(@RequestParam String email){
 		try {
-		UserDTO userDTO = service.findByEmail(email);
-		return ResponseEntity.ok().body(userDTO);
+		User user = service.findByEmail(email);
+		return ResponseEntity.ok().body(new UserDTO(user));
 		} catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
