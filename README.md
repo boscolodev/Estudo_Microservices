@@ -1,6 +1,3 @@
-Claro, aqui está um exemplo de README para um projeto com a arquitetura de microserviços em Java, utilizando Eureka Server, Zuul Gateway e banco de dados H2:
-Projeto de Microserviços em Java
-
 Este projeto consiste em uma arquitetura de microserviços em Java, onde cada serviço desempenha um papel específico na aplicação. Utilizamos Eureka Server para registro e descoberta de serviços, Zuul Gateway para roteamento e proxy reverso, e banco de dados H2 para armazenamento de dados temporários.
 Microserviços
 hr-user
